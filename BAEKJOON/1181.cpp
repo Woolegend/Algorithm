@@ -1,23 +1,29 @@
 #include<iostream>
-#include<set>
 #include<algorithm>
-
 using namespace std;
+
+string words[20000];
+
+int compare(string a, string b) {
+	if (a.length() == b.length()) {
+		return a < b;
+	}
+	else {
+		return a.length() < b.length();
+	}
+}
+
 
 int main() {
 	int n;
-	string s;
-	set<string> str;
-
 	cin >> n;
-
 	for (int i = 0; i < n; i++) {
-		cin >> s;
-		str.insert(s);
+		cin >> words[i];
 	}
 
-	for_each(s.begin(), s.end(), [](string i) {
-		cout << i << endl;
-	});
-	return 0;
+	sort(words, words + n, compare);
+	for (int i = 0; i < n; i++) {
+		if (words[i] == words[i + 1]) continue;
+		cout << words[i] << endl;
+	}
 }

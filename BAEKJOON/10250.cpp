@@ -12,6 +12,6 @@ int main(){
         if(a == h) --b;
         cout << a;
         if(b < 10) cout << "0";
-        cout << b;
+        cout << b << endl;
     }
 }
