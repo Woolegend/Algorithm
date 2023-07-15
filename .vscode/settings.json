@@ -1,7 +1,25 @@
 {
     "files.associations": {
+<<<<<<< HEAD
         "vector": "cpp",
         "queue": "cpp",
         "iostream": "cpp"
+=======
+        "stack": "cpp",
+        "iostream": "cpp",
+        "queue": "cpp",
+        "ostream": "cpp",
+        "vector": "cpp",
+        "algorithm": "cpp",
+        "xiosbase": "cpp",
+        "xlocale": "cpp",
+        "xutility": "cpp",
+        "utility": "cpp",
+        "xstddef": "cpp",
+        "cmath": "cpp",
+        "xstring": "cpp",
+        "xtree": "cpp",
+        "deque": "cpp"
+>>>>>>> 6ab08ce03c673901aa508874969a379b3a0a221a
     }
 }
