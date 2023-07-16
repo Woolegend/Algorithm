@@ -1,22 +1,31 @@
+// 백준 1436
+// #알고리즘#
+// 1. 브루트포스 알고리즘
+
+// #접근
+// 1. 666이 반복되는 수의 패턴 분석 / 실패
+// 2. 1부터 증가하며 모든 수를 검증
+
 #include<iostream>
 using namespace std;
 
-//666 1666 2666 3666 4666 5666 6660 6661 6662 6663 6664 6665 6667 6668 6669
-//10666 11666 12666 13666 14666 15666 16660 16661 16662 16663 16664 16665 16666 16667 16668 16669 17666 18666 19666
-
 int main(){
-    int num, front, mid, back;
+    int num, ans, tmp, cnt;
+    scanf("%d", &num);
 
-    scanf("%d", num);
-    front = 0;
-    mid = 66;
-    back = 6;
-    for(int i = 1; i<num; i++){
-        if(front % 10 < 6) front++;
-        else{
-            
+    ans = 0;
+    for(int i = 0; i < num; i++){
+        while(true){
+            ans++;
+            tmp = ans;
+            cnt = 3;
+            while(tmp && cnt){
+                if(tmp % 10 != 6) cnt = 3;
+                else cnt--;
+                tmp /= 10;
+            }
+            if(cnt == 0) break;
         }
     }
-    if(num != 0) cout << front;
-    cout << mid << back;
+    printf("%d\n", ans);
 }
