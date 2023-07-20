@@ -1,44 +1,45 @@
 #include<iostream>
 #include<vector>
-#include<algorithm>
 #include<cmath>
+#include<algorithm>
 using namespace std;
 
 int main(){
     vector<int> v;
     vector<int> f;
-    int n, in, fre, fre_max, ran, avg;
-    float sum;
+    int n, in, sum, avg, mid, fre, fre_max, ran;
+
     scanf("%d", &n);
 
     sum = 0;
-    for(int i = 0; i<n; i++){
+    for(int i = 0; i < n; i++){
         scanf("%d", &in);
-        v.push_back(in);
         sum += in;
+        v.push_back(in);
     }
     sort(v.begin(), v.end(), less<int>());
 
-    avg = round(sum/n);
+    avg = round(float(sum) / n);
+    mid = v[n / 2];
+    ran = v.back() - v.front();
 
     fre_max = 0;
     for(int i = 0; i<v.size(); i++){
-        fre = 1;
-        while(i + 1 < v.size()){
-            if(v[i] == v[i+1]) fre++;
-            else break;
-            i++;
-        }
-        if(fre > fre_max){
+        if(v[i] == v[i-1]) continue;
+        fre = upper_bound(v.begin(), v.end(), v[i]) - lower_bound(v.begin(), v.end(), v[i]);
+        if(fre_max < fre){
             fre_max = fre;
             f.clear();
             f.push_back(v[i]);
         }
-        else if(fre == fre_max)
+        else if(fre_max == fre){
             f.push_back(v[i]);
+        }
     }
+
     cout << avg << endl;
-    cout << v[n/2] << endl;
-    cout << (f.size() > 1 ? f[1] : f[0]) << endl;
-    cout << v.back() - v.front();
+    cout << mid << endl;
+    if(f.size() > 1) cout << f[1] << endl;
+    else cout << f[0] << endl;
+    cout << ran << endl;
 }
