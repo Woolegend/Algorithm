@@ -1,13 +1,16 @@
 #include<iostream>
 #include<algorithm>
-#include<stack>
-using namespace std;
+#include<stack> // LIFO
+#include<queue> // FIFO
+#include<map> // <key, value>
+#include<set> // <value>
+#include<vector> // 단방향
+#include<deque> //양방향
+#include<cmath>
+#include<string.h> // isdisit stoi
+//using namespace std;
 
 int main(){
-    stack<int> st1;
-    stack<int> st2;
-    stack<char> st3;
-
-    cout << "a" << st1.top() << "b";
-
+    std::ios::sync_with_stdio(false);
+    std::cin.tie(0);
 }
