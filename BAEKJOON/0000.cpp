@@ -8,9 +8,9 @@
 #include<deque> //양방향
 #include<cmath>
 #include<string.h> // isdisit stoi
-//using namespace std;
+using namespace std;
 
 int main(){
-    std::ios::sync_with_stdio(false);
-    std::cin.tie(0);
+    ios::sync_with_stdio(false);
+    cin.tie(NULL);
 }
