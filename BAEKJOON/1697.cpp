@@ -2,36 +2,38 @@
 #include<queue>
 using namespace std;
 
-int n, k, f, tmp, q_end, ans;
+int n, k, tmp, dst, ans;
 queue<int> q;
-bool flag;
+bool visited[100001];
 
-int main(){
+void push(int p) {
+    if (p < 0 || p > 100000) return;
+    if (visited[p]) return;
+    visited[p] = true;
+    q.push(p);
+}
+
+int main() {
     ios::sync_with_stdio(false);
     cin.tie(NULL);
 
     cin >> n >> k;
 
-    if(n != k){
-        q.push(n);
+    q.push(n);
+    visited[n] = true;
 
-        while(!flag){
-            ans++;
-            q_end = q.size();
-            for(int i = 0; i < q_end; i++){
-                f = q.front();
-                tmp = f + 1;
-                if(tmp != k) q.push(tmp);
-                else flag = true;
-                tmp = f - 1;
-                if(tmp != k) q.push(tmp);
-                else flag = true;
-                tmp = f * 2;
-                if(tmp != k) q.push(tmp);
-                else flag = true;
-                q.pop();
-            }
+    while (!visited[k]) {
+        ans++;
+        dst = q.size();
+        for (int i = 0; i < dst; i++) {
+            tmp = q.front();
+            push(tmp + 1);
+            push(tmp - 1);
+            push(tmp * 2);
+            if (visited[k]) break;
+            q.pop();
         }
     }
+
     cout << ans;
 }
