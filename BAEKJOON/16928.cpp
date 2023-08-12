@@ -45,6 +45,5 @@ int main(){
             q.pop();
         }
     }
-
     cout << ans;
 }
