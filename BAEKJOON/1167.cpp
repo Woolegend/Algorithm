@@ -2,7 +2,7 @@
 #include<queue>
 using namespace std;
 
-int n, a, b, d, ans;
+int n, a, b, d, x, ans;
 vector<pair<int, int> > v[100001];
 
 void BFS(int p){
@@ -17,7 +17,10 @@ void BFS(int p){
         int dis = q.front().second;
         q.pop();
 
-        if(dis > ans) ans = dis;
+        if(dis > ans) {
+            ans = dis;
+            x = node;
+        }
         for(int i = 0; i < v[node].size(); i++){
             int tmp = v[node][i].first;
             if(!vis[tmp]){
@@ -45,11 +48,8 @@ int main(){
         }
     }
 
-    for(int i = 1; i <= n; i++){
-        if(v[i].size() == 1){
-           BFS(i);
-        }
-    }
+    BFS(1);
+    BFS(x);
 
     cout << ans;
 }

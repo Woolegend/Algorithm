@@ -22,4 +22,5 @@ int main(){
     ll n;
     cin >> n;
     cout << func(n) << '\n';
+
 }
