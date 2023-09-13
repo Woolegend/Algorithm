@@ -11,11 +11,15 @@
             "label": "save and compile for C++",
             "command": "g++",
             "args": [
+                "-std=c++11",
                 "${file}",
                 "-o",
                 "${fileDirname}/${fileBasenameNoExtension}"
             ],
-            "group": "build",
+            "group": {
+                "kind": "build",
+                "isDefault": true
+            },
             "problemMatcher": {
                 "fileLocation": [
                     "relative",
@@ -96,11 +100,6 @@
                 "$gcc"
             ],
             "group": "build",
-//            "group": {
-//               "kind": "build",
-//                "isDefault": true
-//            },
-            
             "detail": "디버거에서 생성된 작업입니다."
         },
         {
@@ -120,13 +119,27 @@
                 "$gcc"
             ],
             "group": "build",
-              
-            // "group": {
-            //     "kind": "build",
-            //     "isDefault": true
-            // },
-
             "detail": "컴파일러: C:\\MinGW\\bin\\gcc.exe"
+        },
+        {
+            "type": "cppbuild",
+            "label": "C/C++: g++ 활성 파일 빌드",
+            "command": "/usr/bin/g++",
+            "args": [
+                "-fdiagnostics-color=always",
+                "-g",
+                "${file}",
+                "-o",
+                "${fileDirname}/${fileBasenameNoExtension}"
+            ],
+            "options": {
+                "cwd": "${fileDirname}"
+            },
+            "problemMatcher": [
+                "$gcc"
+            ],
+            "group": "build",
+            "detail": "디버거에서 생성된 작업입니다."
         }
     ]
 }
