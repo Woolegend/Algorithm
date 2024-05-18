@@ -9,17 +9,24 @@
 #include<iostream>
 using namespace std;
 
+int DP[15][15];
+
 int func(int a, int b){
     if(a == 0 || b == 1) return b;
-    return func(a - 1, b) + func(a, b - 1);
+    if(DP[a][b]) return DP[a][b];
+    DP[a][b] = func(a - 1, b) + func(a, b - 1);
+    return DP[a][b];
 }
 
 int main(){
-    int t, k, n, a;
-    scanf("%d", &t);
+    ios::sync_with_stdio(false);
+    cin.tie(NULL);
+    cout.tie(NULL);
+
+    int t, k, n;
+    cin >> t;
     for(int i = 0; i < t; i++){
-        scanf("%d %d", &k, &n);
-        a = func(k, n);
-        printf("%d\n", a);
+        cin >> k >> n;
+        cout << func(k, n) << '\n';
     }
 }

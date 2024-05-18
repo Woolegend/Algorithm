@@ -13,8 +13,11 @@ void func(int p){
     fill(vis, vis + N + 1, false);
     fill(dis, dis + N + 1, INF);
     q.push(p);
-
+    vis[p] = true;
     
+    while(!q.empty()){
+        
+    }
 }
 
 int main(){

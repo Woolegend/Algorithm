@@ -4,10 +4,7 @@
         "queue": "cpp",
         "iostream": "cpp",
         "stack": "cpp",
-        "iostream": "cpp",
-        "queue": "cpp",
         "ostream": "cpp",
-        "vector": "cpp",
         "algorithm": "cpp",
         "xiosbase": "cpp",
         "xlocale": "cpp",
@@ -17,6 +14,7 @@
         "cmath": "cpp",
         "xstring": "cpp",
         "xtree": "cpp",
-        "deque": "cpp"
+        "deque": "cpp",
+        "ios": "cpp"
     }
 }

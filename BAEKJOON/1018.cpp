@@ -1,5 +1,6 @@
 #include<iostream>
 using namespace std;
+
 int main(){
     int m, n, cnt_W, cnt_B, min_cnt;
     string board[50],
