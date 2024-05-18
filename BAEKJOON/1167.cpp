@@ -3,11 +3,11 @@
 using namespace std;
 
 int n, a, b, d, x, ans;
-vector<pair<int, int>> v[100001];
+vector<pair<int, int> > v[100001];
 
 void BFS(int p){
     vector<bool> vis(n, false);
-    queue<pair<int, int>> q;
+    queue<pair<int, int> > q;
 
     q.push(make_pair(p, 0));
     vis[p] = true;
@@ -44,7 +44,7 @@ int main(){
             cin >> b;
             if(b == -1) break;
             cin >> d;
-            v[a].push_back({b, d});
+            v[a].push_back(make_pair(b, d));
         }
     }
 

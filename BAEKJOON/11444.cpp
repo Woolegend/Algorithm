@@ -1,31 +1,26 @@
 #include<iostream>
-#include<vector>
+#include<map>
 using namespace std;
+#define DIV 1000000007
 #define ll long long
 
-vector<ll> v;
+map<ll, ll> m;
 
-ll f(int m){
-    if(v.size() <= m){
-        ll tmp = (f(m - 1) + f(m - 2)) % 1000000007;
-        v.push_back(tmp);
-        return tmp;
-    }
-    else return v[m];
+ll func(ll a){
+    if(a < 3) return 1;
+    if(m.count(a) > 0) return m[a];
+
+    ll b = (a + 1) / 2;
+    ll tmp1 = func(b - 1);
+    ll tmp2 = func(b);
+    if(a % 2 == 0) m[a] = ((2 * tmp1 + tmp2) * tmp2) % DIV;
+    else m[a] = (tmp1 * tmp1 + tmp2 * tmp2) % DIV;
+    return m[a];
 }
 
 int main(){
-    int n;
+    ll n;
     cin >> n;
-
-    if(n < 3) cout << 1;
-    else{
-        v.push_back(0);
-        v.push_back(1);
-        v.push_back(1);
-        for(int i = 0; i < 100; i++){
-            cout << f(i) << '\n';
-        }
-    }
+    cout << func(n) << '\n';
 
 }
