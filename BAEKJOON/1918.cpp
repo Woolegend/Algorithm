@@ -1,18 +1,3 @@
-<<<<<<< HEAD
-#include<iostream>
-#include<vector>
-using namespace std;
-
-vector<string> v;
-string modify;
-
-int main(){
-    ios::sync_with_stdio(false);
-    cin.tie(NULL);
-    cout.tie(NULL);
-
-    cin >> modify;
-=======
 #include <iostream>
 #include <stack>
 using namespace std;
@@ -62,5 +47,4 @@ int main(){
         cout << st.top();
         st.pop();
     }
->>>>>>> 797c794ae12b9e412345bcba424ca741774d16b9
 }

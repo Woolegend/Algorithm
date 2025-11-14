@@ -1,10 +1,6 @@
 #include<iostream>
-
 using namespace std;
 
-//동적 계획법
-//한 번 출력 된 결과를 저장하여
-//동일한 조건이 왔을때 계산을 생략한다.
 int memo[31][31] = {0};
 
 int f(int a, int b, int n) {
