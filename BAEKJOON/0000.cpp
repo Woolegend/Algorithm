@@ -15,8 +15,8 @@ using namespace std;
 
 // using ll = long long;
 // using unsigned long long = ull;
-// #define INF = 2147483647;
-// #define MINF = -2147483648;
+// #define INF = 2147483647
+// #define MINF = -2147483648
 
 int main(){
     ios::sync_with_stdio(false); 
