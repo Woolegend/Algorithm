@@ -14,7 +14,7 @@
 using namespace std;
 
 // using ll = long long;
-// using unsigned long long = ull;
+// using ull = unsigned long long;
 // #define INF = 2147483647
 // #define MINF = -2147483648
 
