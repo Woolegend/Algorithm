@@ -3,14 +3,17 @@
 #include<cmath>
 using namespace std;
 
-int dp[11] = {0, };
+int dp[11];
 
-int calc(int y, double r){
-    int a, b, c;
-    if(y >= 5) a = calc(y - 5, 1.35);
-    if(y >= 3) b = calc(y - 3, 1.20);
-    if(y >= 1) c = calc(y - 1, 1.05);
-    return dp[y] = max({(int)floor(dp[y] * r), a, b, c});
+int calc(int y){
+    if(y < 0) return -1;
+    if(y == 0) return dp[0];
+
+    int a = (int)floor(calc(y-5) * 1.35);
+    int b = (int)floor(calc(y-3) * 1.20);
+    int c = (int)floor(calc(y-1) * 1.05);
+
+    return dp[y] = max({dp[y], a, b, c});
 }
 
 int main(){
@@ -21,5 +24,5 @@ int main(){
     int y;
     cin >> dp[0] >> y;
 
-    cout << calc(y, 1) << "\n";
+    cout << calc(y);
 }
