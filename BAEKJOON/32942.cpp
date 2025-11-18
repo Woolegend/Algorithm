@@ -1,42 +1,41 @@
 #include<iostream>
+#include<vector>
 #include<cmath>
 using namespace std;
+#define MAX 11
 
-int main(){
-    ios::sync_with_stdio(false); 
-    cin.tie(NULL);
-    cout.tie(NULL);
 
-    int A, B, C;
+vector<int> graph[MAX];
 
-    cin >> A >> B >> C;
-
-    if(B == 0) {
-        float x = A > 0 ? C / A : -1;
-        bool flag = false;
-        if(fmod(x, 1) == 0 && x >= 1 && x <= 10) {
-            flag = true;
-        }
-        for(int i = 1; i <= 10; i++) {
-            if(i == x && flag) {
-                for(int j = 1; j <= 10; j++) {
-                    cout << j;
-                    if(j != 10) cout << ' ';
-                }
-                cout << '\n';
-            } else {
-                cout << 0 << '\n';
+void solve(int a, int b, int c) {
+	for(int i = 1; i <= 10; i++){
+        for(int j = 1; j <= 10; j++){
+            if(a*i + b*j == c){
+                graph[i].push_back(j);
             }
         }
-    } else {
-        for(int x = 1; x <= 10; x++){
-            float y = (float)((C - A * x) / B);
-            if(fmod(y, 1) == 0 && y >= 1 && y <= 10) {
-                cout << y;
-            } else {
-                cout << 0;
-            }
-            cout << '\n';
+        if(graph[i].size() == 0){
+            graph[i].push_back(0);
         }
+    }
+}
+
+int main() {
+	ios::sync_with_stdio(false);
+	cin.tie(NULL);
+	cout.tie(NULL);
+
+	int A, B, C;
+
+	cin >> A >> B >> C;
+
+	solve(A, B, C);
+
+	for(int i = 1; i <= 10; i++){
+        for(int j = 0; j < graph[i].size(); j++){
+            cout << graph[i][j];
+			if(j < graph[i].size() - 1) cout << ' ';
+        }
+        if(i < 10) cout << "\n";
     }
 }
