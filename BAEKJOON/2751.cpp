@@ -1,22 +1,19 @@
-// 백준 2751
-// #알고리즘#
-// 1. 정렬
-
 #include<iostream>
 #include<vector>
 #include<algorithm>
 using namespace std;
 
 int main(){
+    ios::sync_with_stdio(false); 
+    cin.tie(NULL);
+    cout.tie(NULL);
+
     vector<int> v;
-    int n, a;
+    int n;
     cin >> n;
-    for(int i = 0; i<n; i++){
-        cin >> a;
-        v.push_back(a);
-    }
+    v.resize(n);
+
+    for(auto& i:v) cin >> i;
     sort(v.begin(), v.end(), less<int>());
-    for(int i:v){
-        cout << i << "\n";
-    }
+    for(auto i:v) cout << i << "\n";
 }

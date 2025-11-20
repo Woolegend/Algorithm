@@ -10,19 +10,19 @@ bool compare(pair<int, string> a, pair<int, string> b){
 }
 
 int main(){
-    int tc, age;
-    string name;
+    ios::sync_with_stdio(false); 
+    cin.tie(NULL);
+    cout.tie(NULL);
+
+    int t;
     vector<pair<int, string>> v;
+
+    cin >> t; 
+    v.resize(t);
     
-    cin >> tc; 
-    for(int i = 0; i < tc; i++){ 
-        cin >> age >> name;
-        v.push_back(make_pair(age, name));
-    }
+    for(auto& i:v) cin >> i.first >> i.second;
 
     stable_sort(v.begin(), v.end(), compare);
 
-    for(int i = 0; i < tc; i++){
-        cout << v[i].first << " " << v[i].second << "\n";
-    }
+    for(auto& i:v) cout << i.first << " " << i.second << "\n";
 }

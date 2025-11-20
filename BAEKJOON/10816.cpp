@@ -9,36 +9,51 @@
 // 2. upper, lower bound 사용 시간 초과
 
 #include<iostream>
-#include<map>
 #include<vector>
 #include<algorithm>
 using namespace std;
 
+
 int main(){
-    map<int, int> mp;
+    ios::sync_with_stdio(false); 
+    cin.tie(NULL);
+    cout.tie(NULL);
+
     vector<int> v;
-    int n, m, in;
+    int N, M, a;
 
-    scanf("%d", &n);
+    cin >> N;
+    v.resize(N);
+    for(auto& i:v) cin >> i;
+    sort(v.begin(), v.end(), less<int>());
 
-    for(int i = 0; i<n; i++){
-        scanf("%d", &in);
-        
-        auto tmp = mp.find(in); 
-        if(tmp != mp.end()) tmp->second++;
-        else mp.insert({in, 1});
-    }
-
-    scanf("%d", &m);
-
-    for(int i = 0; i<m; i++){
-        scanf("%d", &in);
-        v.push_back(in);
-    }
-
-    for(int i = 0; i < m; i++){
-        auto tmp = mp.find(v[i]);
-        if(tmp != mp.end()) printf("%d ", tmp->second);
-        else printf("0 ");
-    }
+    cin >> M;
+    while(M--){
+        cin >> a;
+        cout << upper_bound(v.begin(), v.end(), a) - lower_bound(v.begin(), v.end(), a) << ' ';
+    }   
 }
+
+// #include<iostream>
+// #include<map>
+// using namespace std;
+
+// int main(){
+//     ios::sync_with_stdio(false); 
+//     cin.tie(NULL);
+//     cout.tie(NULL);
+
+//     int N, M, a;
+//     map<int, int> mp;
+//     cin >> N;
+//     for(int i = 0; i < N; i++){
+//         cin >> a;
+//         if(mp.find(a) != mp.end()) mp[a]++;
+//         else mp.insert({a, 1});
+//     }
+//     cin >> M;
+//     for(int i = 0; i < M; i++) {
+//         cin >> a;
+//         cout << mp[a] << ' ';
+//     }
+// }

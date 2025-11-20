@@ -2,19 +2,23 @@
 using namespace std;
 
 int main(){
-    int n, sum, tmp, ans = 0;
-    scanf("%d", &n);
-    for(int i = 1; i<n; i++){
-        sum = i;
-        tmp = i;
-        while(tmp){
+    ios::sync_with_stdio(false); 
+    cin.tie(NULL);
+    cout.tie(NULL);
+
+    int N, M = 0;
+    cin >> N;
+    for(int i = 1; i < N; i++) {
+        int sum = i;
+        int tmp = i;
+        while(tmp) {
             sum += tmp % 10;
             tmp /= 10;
         }
-        if(sum == n){
-            ans = i;
+        if(sum == N) {
+            M = i;
             break;
         }
     }
-    printf("%d", ans);
+    cout << M;
 }
