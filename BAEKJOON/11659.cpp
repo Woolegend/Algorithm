@@ -14,23 +14,22 @@
 using namespace std;
 
 int main(){
-    ios::sync_with_stdio(false);
-    cin.tie(0);
+    ios::sync_with_stdio(false); 
+    cin.tie(NULL);
 
     vector<int> v;
-    int n, m, a, b, in, sum;
- 
-    cin >> n >> m;
+    int n, m, a, b;
 
-    v.push_back(0);
-    for (int i = 0; i < n; i++){
-        cin >> in;
-        v.push_back(in + v[i]);
+    cin >> n >> m;
+    v.resize(n + 1);
+
+    for(int i = 1; i < v.size(); i++) {
+        cin >> v[i];
+        v[i] += v[i - 1];
     }
 
-    for(int i = 0; i < m; i++){
+    while(m--) {
         cin >> a >> b;
-        sum = v[b] - v[a-1]; 
-        cout << sum << '\n';
+        cout << v[b] - v[a-1] << '\n';
     }
 }

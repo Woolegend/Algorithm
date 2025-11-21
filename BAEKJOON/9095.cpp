@@ -1,38 +1,23 @@
-/*
-
-*/
-
 #include<iostream>
 using namespace std;
 
-int fact(int n){
-    int result = 1;
-    for(int i = 2; i <= n; i++)
-        result *= i;
-    return result;
+int dp[12] = {0, 1, 2, 4};
+
+int solve(int n) {
+    if(dp[n]) return dp[n];
+    return dp[n] = solve(n - 3) + solve(n - 2) + solve(n - 1);
 }
 
 int main(){
-    ios::sync_with_stdio(false);
-    cin.tie(0);
+    ios::sync_with_stdio(false); 
+    cin.tie(NULL);
 
-    int a, b, num, tc, cnt, ans;
+    int T, n;
 
-    cin >> tc;
+    cin >> T;
 
-    for(int i = 0; i< tc; i++){
-        cin >> num;
-
-        ans = 0;
-        a = num / 3;
-        for(int x = 0; x <= a; x++){
-            b = (num - (3 * x)) / 2;
-            for(int y = 0; y <= b; y++){
-                int z = num - 3 * x - 2 * y;
-                cnt = fact(x + y + z) / (fact(x) * fact(y) * fact(z));
-                ans += cnt;
-            }
-        }
-        cout << ans << '\n'; 
+    while(T--) {
+        cin >> n;
+        cout << solve(n) << '\n';
     }
 }

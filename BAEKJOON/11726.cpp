@@ -16,21 +16,15 @@
 #include<iostream>
 using namespace std;
 
-int m[1001], n, ans;
+int dp[1001] = {0, 1, 2};
 
-int func(int p){
-    if(m[p]) return m[p];
-    m[p] = (func(p - 1) + func(p - 2)) % 10007;
-    return m[p];
+int solve(int n) {
+  if(dp[n]) return dp[n];
+  return dp[n] = (solve(n - 1) + solve(n - 2)) % 10007;
 }
 
-int main(){
-    ios::sync_with_stdio(false);
-    cin.tie(NULL);
-
-    m[1] = 1;
-    m[2] = 2;
-
-    cin >> n;
-    cout << func(n);
+int main() {
+  int n;
+  cin >> n;
+  cout << solve(n);
 }

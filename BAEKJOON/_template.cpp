@@ -17,7 +17,6 @@ using ull = unsigned long long;
 #define INF 2147483647
 #define MINF -2147483648
 
-
 int main(){
     ios::sync_with_stdio(false); 
     cin.tie(NULL);

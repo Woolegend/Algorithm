@@ -7,38 +7,44 @@
 */
 
 #include<iostream>
-#include<algorithm>
-#include<queue>
 #include<vector>
+#include<queue>
+using namespace std;
 
-std::vector<int> v[101];
-std::queue<int> q;
-bool vis[101];
+vector<int> v[101];
+bool visited[101];
+queue<int> q;
+
+int solve() {
+    int cnt = 0;
+    q.push(1);
+    visited[1] = true;
+
+    while(!q.empty()){
+        int f = q.front();
+        q.pop();
+        for(auto i:v[f]) {
+            if(visited[i]) continue;
+            visited[i] = true;
+            q.push(i);
+            cnt++;
+        }
+    }
+    return cnt;
+}
 
 int main(){
-    std::ios::sync_with_stdio(false);
-    std::cin.tie(0);
+    ios::sync_with_stdio(false); 
+    cin.tie(NULL);
 
-    int n, m, a, b, f, cnt;
-    std::cin >> n >> m;
-    for(int i = 0; i<m; i++){
-        std::cin >> a >> b;
+    int n, m, a, b;
+    cin >> n >> m;
+
+    for(int i = 0; i < m; i++) {
+        cin >> a >> b;
         v[a].push_back(b);
         v[b].push_back(a);
     }
 
-    cnt = -1;
-    q.push(1);
-    vis[1] = true;
-    while(!q.empty()){
-        f = q.front();
-        for(int tmp:v[f]){
-            if(vis[tmp]) continue;
-            q.push(tmp);
-            vis[tmp] = true;
-        }
-        q.pop();
-        cnt++;
-    }
-    std::cout << cnt << '\n';
+    cout << solve();
 }

@@ -20,33 +20,38 @@ mid는 나무 m만큼을 얻기 위한 높이의 근사값이다.
 
 #include<iostream>
 #include<vector>
+using namespace std;
+
+using ll = long long;
+
+vector<int> v;
 
 int main(){
-    long long n, m, in, begin, end = 0, mid, sum;
-    std::vector<int> v;
+    ios::sync_with_stdio(false); 
+    cin.tie(NULL);
 
-    scanf("%lld %lld", &n, &m);
+    ll N, M, sum, min = -1, max = 0, mid;
 
-    for(int i = 0; i<n; i++){
-        scanf("%lld", &in);
-        v.push_back(in);
-        if(in > end) end = in;
-    }
+    cin >> N >> M;
+    v.resize(N);
 
-    begin = -1;
-    end += 2;
-    while(begin + 1 != end){
+    for(auto& i:v) {
+        cin >> i;
+        if(i > max) max = i;
+    };
+
+    max += 1;
+    while(min + 1 != max) {
         sum = 0;
-        mid = (end + begin) / 2;
- 
-        for(int a:v)
-            sum += a > mid ? a - mid : 0;
-
-        if(sum == m) break;
-        else if(sum < m) end = mid;
-        else if(sum > m) begin = mid;
+        mid = (max + min) / 2;
+        for(auto i:v) {
+            if(i > mid) sum += i - mid;
+        }
+        if(sum == M) break;
+        if(sum > M) min = mid;
+        else if(sum < M) max = mid;
     }
     
-    if(sum < m) mid--;
-    std::cout << mid << "\n";
+    if(sum < M) mid--;
+    cout << mid;
 }
