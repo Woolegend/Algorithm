@@ -3,10 +3,14 @@
 using namespace std;
 
 int main(){
+    ios::sync_with_stdio(false); 
+    cin.tie(NULL);
+    cout.tie(NULL);
+
     queue<int> q;
     int n, k;
 
-    scanf("%d %d", &n, &k);
+    cin >> n >> k;
     for(int i = 1; i<=n; i++)
         q.push(i);
 

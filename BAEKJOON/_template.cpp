@@ -12,13 +12,14 @@
 #include<string> // getline, to_string, stoi, isdigit
 using namespace std;
 
-// using ll = long long;
-// using ull = unsigned long long;
-// #define INF = 2147483647
-// #define MINF = -2147483648
+using ll = long long;
+using ull = unsigned long long;
+#define INF 2147483647
+#define MINF -2147483648
+
 
 int main(){
     ios::sync_with_stdio(false); 
     cin.tie(NULL);
-    cout.tie(NULL);
+    // cout.tie(NULL);
 }

@@ -25,29 +25,31 @@
 
 #include<iostream>
 #include<set>
+#include<string>
 using namespace std;
 
-int main(){
-    set<string> listen;
-    set<string> ans;
-    string in;
-    int n, m;
+set<string> st;
+set<string> ans;
 
-    scanf("%d %d", &n, &m);
+int main() {
+    ios::sync_with_stdio(false); 
+    cin.tie(NULL);
+    cout.tie(NULL);
 
-    for(int i = 0; i < n; i++){
-        cin >> in;
-        listen.insert(in);
+    int N, M;
+    string s;
+    cin >> N >> M;
+    for(int i = 0; i < N; i++) {
+        cin >> s;
+        st.insert(s);
+    }
+    for(int i = 0; i < M; i++) {
+        cin >> s;
+        if(st.find(s) != st.end()) ans.insert(s);
     }
 
-    for(int i = 0; i<m; i++){
-        cin >> in;
-        if(listen.find(in) != listen.end()){
-            ans.insert(in);
-        }
-    }
-
-    cout << ans.size() << endl;
-    for(auto iter = ans.begin(); iter != ans.end(); iter++)
-        cout << *iter << endl;
+    cout << ans.size() << '\n';
+    for(auto i:ans) cout << i << '\n';
+//  for(auto iter = ans.begin(); iter != ans.end(); iter++)
+//  cout << *iter << endl;
 }

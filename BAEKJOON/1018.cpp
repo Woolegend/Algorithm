@@ -1,8 +1,13 @@
 #include<iostream>
+#include<string>
 using namespace std;
 
 int main(){
-    int m, n, cnt_W, cnt_B, min_cnt;
+    ios::sync_with_stdio(false);
+    cin.tie(NULL);
+    cout.tie(NULL);
+
+    int m, n, cnt_W, cnt_B, ans;
     string board[50],
         W = "WBWBWBWB",
         B = "BWBWBWBW",
@@ -19,7 +24,7 @@ int main(){
         board_B[i] = i % 2 ? W : B;
     }
 
-    min_cnt = 64;
+    ans = 64;
     for(int h = 0; h <= m - 8; h++){
         for(int w = 0; w <= n-8; w++){
             cnt_W = 0;
@@ -32,9 +37,9 @@ int main(){
                         cnt_B++;
                 }
             }
-            if (cnt_W < min_cnt) min_cnt = cnt_W;
-            if (cnt_B < min_cnt) min_cnt = cnt_B;
+            if (cnt_W < ans) ans = cnt_W;
+            if (cnt_B < ans) ans = cnt_B;
         }
     }
-    cout << min_cnt << endl;
+    cout << ans << endl;
 }

@@ -10,36 +10,34 @@
 */
 #include<iostream>
 using namespace std;
+#define INF 2147483647
 
-int dp[1000001];
+int dp[1000001] = {0, 0, 1, 1};
 
-int func(int num){
-    int a, b, c, min = 1000000;
+int solve(int n){
+    if(dp[n] || n == 1) return dp[n];
+    int tmp, min = INF;
 
-    if(dp[num]) return dp[num];
-    if(num == 1) return 0;
-
-    if(num % 3 == 0){
-        a = func(num / 3);
-        if(a < min) min = a;
+    if(n % 3 == 0) {
+        tmp = solve(n / 3);
+        if(tmp < min) min = tmp;
     }
-
-    if(num % 2 == 0){
-        b = func(num / 2);
-        if(b < min) min = b;
+    if(n % 2 == 0) {
+        tmp = solve(n / 2);
+        if(tmp < min) min = tmp;
     }
+    tmp = solve(n - 1);
+    if(tmp < min) min = tmp;
 
-    c = func(num - 1);
-    if(c < min) min = c;
-
-    dp[num] = min + 1; 
-    return dp[num];
+    return dp[n] = min + 1; 
 }
 
 
 int main(){
-    int n;
-    dp[2] = dp[3] = 1;
-    scanf("%d", &n);
-    cout << func(n);
+    ios::sync_with_stdio(false); 
+    cin.tie(NULL);
+
+    int N;
+    cin >> N;
+    cout << solve(N);
 }
