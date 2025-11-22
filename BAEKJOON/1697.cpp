@@ -2,6 +2,42 @@
 #include<queue>
 using namespace std;
 
+int N, K;
+int visited[100001];
+queue<pair<int, int>> q;
+
+int solve(int n) {
+    if(n == K) return 0;
+    q.push({n, 0});
+
+    while(!visited[K]){
+        auto a = q.front();
+        q.pop();
+
+        if(visited[a.first]) continue;
+        visited[a.first] = a.second;
+
+        if(a.first > 0) q.push({a.first-1, a.second+1});
+        if(a.first < 100000) q.push({a.first+1, a.second+1});
+        if(a.first*2 < 100001) q.push({a.first*2, a.second+1});
+    }
+
+    return visited[K];
+}
+
+int main(){
+    ios::sync_with_stdio(false); 
+    cin.tie(NULL);
+
+    cin >> N >> K;
+    cout << solve(N);
+}
+
+/*
+#include<iostream>
+#include<queue>
+using namespace std;
+
 int n, k, tmp, dst, ans;
 queue<int> q;
 bool visited[100001];
@@ -37,3 +73,4 @@ int main() {
 
     cout << ans;
 }
+*/
